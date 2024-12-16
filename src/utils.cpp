@@ -40,6 +40,10 @@ bool CleanSKSECosaves()
     if (!savesPath)
         return false;
 
+    logger::error(FMT_STRING("Error Clean SKSE CoSaves has been disabled"));
+    return true; // TODO intended for now
+
+    /* TODO cosave disabled for the time being - nuking boost::regex from existance
     constexpr auto REGEX_CONSTANTS = boost::regex_constants::ECMAScript | boost::regex_constants::icase;
     const boost::regex cosavePattern(R"(.*\.skse$)", REGEX_CONSTANTS);
     std::vector<std::filesystem::path> matches;
@@ -76,4 +80,5 @@ bool CleanSKSECosaves()
     }
 
     return true;
+    */
 }

@@ -1,7 +1,7 @@
 {
 	"name": "autotoml",
-	"version-string": "2021-12-18",
-	"homepage": "https://github.com/shad0wshayd3/AutoTOML",
+	"version-string": "master-2024-12-16",
+        "homepage": "https://github.com/alandtse/AutoTOML",
 	"license": "MIT",
 	"dependencies": [
 		"tomlplusplus",

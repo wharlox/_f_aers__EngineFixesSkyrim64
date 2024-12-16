@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 
+cmake_policy(SET CMP0167 NEW)
+
 macro(set_from_environment VARIABLE)
 	if (NOT DEFINED ${VARIABLE} AND DEFINED ENV{${VARIABLE}})
 		set(${VARIABLE} $ENV{${VARIABLE}})
@@ -36,15 +38,44 @@ add_compile_definitions(
     UNICODE
 )
 
+
+#set(CMAKE_TOOLCHAIN_FILE "${PATH_TO_INSTALL_VCPKG}/vcpkg/scripts/buildsystems/vcpkg.cmake"
+#  CACHE STRING "Vcpkg toolchain file")
+
+#find_package(Boost CONFIG REQUIRED COMPONENTS regex)
+#if (Boost_FOUND)
+#    include_directories(${Boost_INCLUDE_DIRS})
+#    link_directories(${Boost_LIBRARY_DIRS})
+#endif ()
+
+
+
 add_subdirectory(external/CommonLibSSE CommonLibSSE)
 
 find_package(AutoTOML REQUIRED CONFIG)
-find_package(Boost
-	MODULE
-	REQUIRED
-	COMPONENTS
-		regex
-)
+
+
+
+
+
+#find_package(Boost CONFIG REQUIRED COMPONENTS regex)
+
+# cmake_policy(SET CMP0167 NEW)
+#find_package(Boost CONFIG REQUIRED COMPONENTS regex)
+# find_package(Boost
+# 	MODULE
+# 	REQUIRED
+# 	COMPONENTS
+# 		regex
+# )
+# find_package(Boost
+# 	NO_MODULE
+# 	REQUIRED
+# 	COMPONENTS
+# 		regex
+# )
+
+
 find_package(TBB
 	REQUIRED
 	CONFIG
@@ -95,7 +126,7 @@ target_link_libraries(
 	${PROJECT_NAME}
 	PRIVATE
 		AutoTOML::AutoTOML
-		Boost::regex
+		# Boost::regex
 		CommonLibSSE::CommonLibSSE
 		TBB::tbb
 		TBB::tbbmalloc
